@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-sand-50: #FDFBF7;
+  --color-sand-100: #F7F0E4;
+  --color-sand-200: #EDE0CC;
+  --color-sand-300: #DFCBAA;
+  --color-sand-400: #CFAF86;
+  --color-sand-500: #BF9362;
+  --color-sand-600: #A67745;
+
+  --color-summer-50: #FFFBF0;
+  --color-summer-100: #FFF3D6;
+  --color-summer-200: #FFE5AC;
+  --color-summer-300: #FFD578;
+  --color-summer-400: #FFC04C;
+  --color-summer-500: #FFA820;
+  --color-summer-600: #E08E00;
+  --color-summer-700: #B87200;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-editorial: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html { scroll-behavior: smooth; }
+body { background: #FDFBF7; font-family: "Inter", sans-serif; color: #292524; }
+
+/* Snipcart Floating Cart Button */
+.snipcart-checkout { 
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #1C1917; border: none;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3); cursor: pointer;
+  transition: all 0.3s ease;
+}
+.snipcart-checkout:hover { transform: scale(1.1); }
+
+/* Custom Animations */
+@keyframes kenBurns {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.08) translateY(-10px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.animate-ken-burns { animation: kenBurns 20s ease-in-out infinite; }
+
+@keyframes cinematicReveal {
+  0% { opacity: 0; transform: translateY(60px); letter-spacing: 0.3em; }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.08em; }
+}
+.animate-cinematic { animation: cinematicReveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.anim-delay-300 { animation-delay: 0.3s; opacity: 0; }
+.anim-delay-600 { animation-delay: 0.6s; opacity: 0; }
+.anim-delay-900 { animation-delay: 0.9s; opacity: 0; }
+
+@keyframes scrollDown {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
+.animate-marquee { animation: marquee 30s linear infinite; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Size Buttons */
+.size-btn {
+  width: 36px; height: 36px; font-size: 12px; font-weight: 500;
+  border: 1px solid #E7E5E4; border-radius: 8px;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+}
+.size-btn:hover, .size-btn.active { 
+  background: #1C1917; color: white; border-color: #1C1917; 
 }
