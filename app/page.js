@@ -1,75 +1,16 @@
 "use client";
 
+import ProductCard from '../components/ProductCard';
+import { products } from '../data/products';
+import Navbar from '../components/Navbar';
+
 export default function Home() {
-
-  const handleSizeSelect = (e, productId, size) => {
-    const btn = document.querySelector(`.snipcart-add-item[data-item-id="${productId}"]`);
-    if (btn) btn.setAttribute('data-item-custom1-value', size);
-    const parent = e.target.parentElement;
-    parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-  };
-
-  const products = [
-    {
-      id: "os-tee-front",
-      name: "OS Oversized Tee",
-      desc: "Camo Front Print — White",
-      price: "499.00",
-      image: "https://z-cdn-media.chatglm.cn/files/9446e316-3b74-4f8c-8cdc-caedb0c45d96.jpg?auth_key=1879577283-aa75d122126e48e7bcd3876e799228d5-0-947f230765126ba6b480c89a478d5fd9",
-      tag: "New",
-      tagColor: "bg-neon text-void",
-    },
-    {
-      id: "os-tee-back",
-      name: "OS Oversized Tee",
-      desc: "Oval Camo \"OS\" — White",
-      price: "499.00",
-      image: "https://z-cdn-media.chatglm.cn/files/ac3ac6e5-b648-4d93-8e47-308c2287c6ec.jpeg?auth_key=1879577283-37c0e4aaa87e41e781dd5b32cfcfc81d-0-eeeee7f5c3c317b619398b9a6d93b62a",
-      tag: "Signature",
-      tagColor: "bg-hot text-white",
-    },
-    // Add more products here easily! Just copy the object:
-    {
-      id: "os-tee-black",
-      name: "OS Oversized Tee",
-      desc: "Camo Print — Black",
-      price: "549.00",
-      image: "https://picsum.photos/seed/os-tee-black/600/800.jpg",
-      tag: "Hot",
-      tagColor: "bg-amber text-void",
-    },
-    {
-      id: "os-hoodie",
-      name: "OS Hoodie",
-      desc: "Oversized — Charcoal",
-      price: "899.00",
-      image: "https://picsum.photos/seed/os-hoodie-charcoal/600/800.jpg",
-      tag: "Soon",
-      tagColor: "bg-white/10 text-white border border-white/20",
-    },
-  ];
-
   return (
     <main className="overflow-x-hidden">
-      {/* ====== NAVBAR ====== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-void/80 backdrop-blur-lg border-b border-ash/50">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <a href="#" className="font-display text-3xl tracking-wider text-neon animate-pulse-neon">OS</a>
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#drops" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Drops</a>
-            <a href="#product" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Shop</a>
-            <a href="#culture" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Culture</a>
-            <a href="#lookbook" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Lookbook</a>
-            <button className="snipcart-checkout relative w-8 h-8 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center" style={{position:'relative',width:'32px',height:'32px',bottom:'auto',right:'auto',boxShadow:'none',background:'transparent'}}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
-      {/* ====== HERO ====== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* ====== HERO — Added pt-14 to fix spacing ====== */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-14">
         <div className="absolute inset-0">
           <img src="https://picsum.photos/seed/streetwear-urban1/1920/1080.jpg" alt="Urban backdrop" className="w-full h-full object-cover opacity-30"/>
           <div className="absolute inset-0 bg-gradient-to-b from-void/80 via-void/60 to-void"></div>
@@ -94,7 +35,7 @@ export default function Home() {
             Local streetwear for the culture. No rules. No limits. Just OS.
           </p>
           <div className="animate-slide-up slide-delay-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#product" className="group px-8 py-4 bg-neon text-void text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-white transition-all shadow-lg shadow-neon/20 flex items-center gap-2">
+            <a href="/shop" className="group px-8 py-4 bg-neon text-void text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-white transition-all shadow-lg shadow-neon/20 flex items-center gap-2">
               Shop the Drop
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -130,7 +71,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== DROPS SECTION ====== */}
+      {/* ====== DROPS ====== */}
       <section id="drops" className="py-16 md:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-void via-void-light to-void"></div>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5 pointer-events-none" style={{background: 'radial-gradient(circle, #39FF14 0%, transparent 70%)'}}></div>
@@ -153,7 +94,7 @@ export default function Home() {
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="font-display text-2xl tracking-[0.04em] text-white">{drop.title}</h3>
-                  <div className="mt-2 flex items-center gap-2 text-smoke text-xs font-medium tracking-wide group-hover:text-neon transition-colors">
+                  <div className="mt-2 flex items-center gap-2 text-smoke text-xs font-medium group-hover:text-neon transition-colors">
                     <span>Shop Now</span>
                     <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </div>
@@ -164,70 +105,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== PRODUCTS (COMPACT & TRANSPARENT) ====== */}
+      {/* ====== FEATURED PRODUCTS (showing first 2) ====== */}
       <section id="product" className="py-16 md:py-24 bg-void relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-10">
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">🛒 Shop</span>
-            <h2 className="mt-3 font-display text-5xl md:text-7xl tracking-[0.02em] text-white">THE COLLECTION<span className="text-neon">.</span></h2>
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">🛒 Shop</span>
+              <h2 className="mt-3 font-display text-5xl md:text-7xl tracking-[0.02em] text-white">FEATURED<span className="text-neon">.</span></h2>
+            </div>
+            <a href="/shop" className="group flex items-center gap-2 px-5 py-2.5 border border-ash text-smoke text-[10px] font-bold tracking-[0.15em] uppercase rounded-full hover:border-neon hover:text-neon transition-all">
+              View All
+              <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
           </div>
-
-          {/* 4-COLUMN GRID for many items */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {products.map((p) => (
-              <div key={p.id} className="product-card group">
-                {/* Image - Transparent background */}
-                <div className="relative overflow-hidden rounded-xl aspect-[3/4]">
-                  <img src={p.image} alt={p.name} className="product-img w-full h-full object-cover transition-transform duration-500 ease-out"/>
-                  <div className="product-overlay absolute inset-0 bg-neon/5 opacity-0 transition-opacity duration-300"></div>
-                  <div className="absolute top-3 left-3">
-                    <span className={`px-2 py-0.5 text-[8px] font-bold tracking-[0.15em] uppercase rounded-full ${p.tagColor}`}>{p.tag}</span>
-                  </div>
-                </div>
-                
-                {/* Info - Clean & Compact */}
-                <div className="mt-3">
-                  <h3 className="font-display text-base tracking-[0.04em] text-white">{p.name}</h3>
-                  <p className="text-[10px] text-smoke mt-0.5">{p.desc}</p>
-                  <span className="font-display text-sm text-neon block mt-1">EGP {Math.round(Number(p.price))}</span>
-                </div>
-
-                {/* Size Selector - Tiny pills */}
-                <div className="mt-2 flex items-center gap-1 flex-wrap">
-                  {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-                    <button 
-                      key={size} 
-                      className={`size-btn text-[10px] px-2 py-1 ${size === 'M' ? 'active' : ''}`} 
-                      onClick={(e) => handleSizeSelect(e, p.id, size)}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Add to Cart - Minimal button */}
-                <button 
-                  className="snipcart-add-item mt-2 w-full py-2.5 bg-neon/10 text-neon text-[10px] font-bold tracking-[0.1em] uppercase rounded-lg border border-neon/20 hover:bg-neon hover:text-void transition-all duration-300 flex items-center justify-center gap-1.5"
-                  data-item-id={p.id}
-                  data-item-price={p.price}
-                  data-item-url="/"
-                  data-item-description={p.desc}
-                  data-item-image={p.image}
-                  data-item-name={`${p.name} — ${p.desc}`}
-                  data-item-custom1-name="Size"
-                  data-item-custom1-value="M"
-                  data-item-custom1-options="S|M|L|XL|XXL"
-                >
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4"/></svg>
-                  Add
-                </button>
-              </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {products.slice(0, 4).map((p) => (
+              <ProductCard key={p.id} product={p} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ====== CULTURE SECTION ====== */}
+      {/* ====== CULTURE ====== */}
       <section id="culture" className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://picsum.photos/seed/urban-street-culture/1920/1080.jpg" alt="Street culture" className="w-full h-full object-cover opacity-15"/>
@@ -330,31 +229,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== COMPLETE THE LOOK ====== */}
-      <section className="py-16 md:py-24 bg-void-light">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">🧢 Style It</span>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl tracking-[0.02em] text-white mb-10">COMPLETE THE FIT<span className="text-neon">.</span></h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { name: 'Black Joggers', desc: 'Tapered · 340gsm', price: 'EGP 599', seed: 'black-joggers-os' },
-              { name: 'OS Cap', desc: 'Snapback · Embroidered', price: 'EGP 249', seed: 'cap-os-street' },
-              { name: 'Slides', desc: 'Molded · OS embossed', price: 'EGP 299', seed: 'slides-os-brand' },
-              { name: 'Tote Bag', desc: 'Heavy canvas · OS print', price: 'EGP 199', seed: 'tote-os-bag' },
-            ].map((item, i) => (
-              <div key={i} className="group cursor-pointer">
-                <div className="overflow-hidden rounded-xl aspect-square p-3 flex items-center justify-center border border-ash/50 group-hover:border-neon/30 transition-colors">
-                  <img src={`https://picsum.photos/seed/${item.seed}/400/400.jpg`} alt={item.name} className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700"/>
-                </div>
-                <h4 className="mt-2 font-display text-sm tracking-[0.04em] text-white">{item.name}</h4>
-                <p className="text-[10px] text-smoke mt-0.5">{item.desc}</p>
-                <span className="font-display text-sm text-neon mt-0.5 block">{item.price}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ====== NEWSLETTER ====== */}
       <section className="py-16 md:py-20 bg-void relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-neon/5 via-transparent to-hot/5 animate-bg-scroll"></div>
@@ -380,7 +254,7 @@ export default function Home() {
             <div>
               <h5 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 mb-4">Shop</h5>
               <ul className="space-y-2">
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">All Products</a></li>
+                <li><a href="/shop" className="text-xs text-smoke hover:text-neon transition-colors">All Products</a></li>
                 <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Tees</a></li>
                 <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Bottoms</a></li>
                 <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Accessories</a></li>
@@ -415,5 +289,5 @@ export default function Home() {
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
       </button>
     </main>
-  )
+  );
 }
