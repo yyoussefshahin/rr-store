@@ -3,53 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const [cartCount, setCartCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [snipcartReady, setSnipcartReady] = useState(false);
-
-  // Listen for Snipcart events to update count
-  useEffect(() => {
-    const updateCount = () => {
-      try {
-        if (window.Snipcart && window.Snipcart.store) {
-          const state = window.Snipcart.store.getState();
-          const items = state.cart.items;
-          // Count TOTAL quantity, not just unique items
-          const totalQty = items.items
-            ? items.items.reduce((sum, item) => sum + item.quantity, 0)
-            : 0;
-          setCartCount(totalQty);
-        }
-      } catch (e) {
-        console.log("Cart update error:", e);
-      }
-    };
-
-    // Keep checking until Snipcart loads
-    const interval = setInterval(() => {
-      if (window.Snipcart && window.Snipcart.store) {
-        clearInterval(interval);
-        setSnipcartReady(true);
-        updateCount();
-
-        // Listen for ALL cart events
-        window.Snipcart.events.on("item.added", updateCount);
-        window.Snipcart.events.on("item.removed", updateCount);
-        window.Snipcart.events.on("item.updated", updateCount);
-        window.Snipcart.events.on("cart.opened", updateCount);
-        window.Snipcart.events.on("cart.closed", updateCount);
-      }
-    }, 300);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Open cart programmatically
-  const openCart = () => {
-    if (window.Snipcart && window.Snipcart.api) {
-      window.Snipcart.api.cart.open();
-    }
-  };
 
   return (
     <>
@@ -59,17 +13,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
 
-            {/* Cart Icon */}
-            <button 
-              onClick={openCart}
-              className="relative w-9 h-9 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-neon text-void text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
+            {/* SNIPCART OFFICIAL CART BUTTON */}
+            {/* This uses Snipcart's built-in class to open the cart */}
+            <button className="snipcart-checkout relative flex items-center justify-center w-9 h-9 rounded-full border border-ash hover:border-neon transition-all">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              {/* Snipcart automatically fills this span with the item count */}
+              <span className="snipcart-items-count absolute -top-1.5 -right-1.5 min-w-[20px] h-5 bg-neon text-void text-[10px] font-bold rounded-full flex items-center justify-center px-1">0</span>
             </button>
 
             {/* Hamburger */}
