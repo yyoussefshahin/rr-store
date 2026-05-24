@@ -30,28 +30,22 @@ export default function Navbar() {
     return () => clearInterval(checkReady);
   }, []);
 
-  // Close menu when route changes
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-void/80 backdrop-blur-lg border-b border-ash/50">
+      {/* ====== NAVBAR BAR ====== */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-lg border-b border-ash/50">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="font-display text-3xl tracking-wider text-neon animate-pulse-neon">
             OS
           </a>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-6">
-            <a href="/#drops" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Drops</a>
-            <a href="/shop" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Shop</a>
-            <a href="/#culture" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Culture</a>
-            <a href="/#lookbook" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Lookbook</a>
-            <a href="/contact" className="text-[10px] font-bold tracking-[0.2em] uppercase text-smoke hover:text-neon transition-colors">Contact</a>
-            
+          {/* Right side: Cart + Hamburger */}
+          <div className="flex items-center gap-3">
             {/* Cart Button */}
             <button className="snipcart-checkout relative w-9 h-9 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center" style={{position:'relative',width:'36px',height:'36px',bottom:'auto',right:'auto',boxShadow:'none',background:'transparent'}}>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
@@ -61,43 +55,74 @@ export default function Navbar() {
                 </span>
               )}
             </button>
-          </div>
 
-          {/* Mobile: Cart + Hamburger */}
-          <div className="md:hidden flex items-center gap-3">
-            <button className="snipcart-checkout relative w-8 h-8 rounded-full border border-ash text-smoke hover:border-neon transition-all flex items-center justify-center" style={{position:'relative',width:'32px',height:'32px',bottom:'auto',right:'auto',boxShadow:'none',background:'transparent'}}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-neon text-void text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
-            {/* Hamburger Button */}
+            {/* Hamburger Button — VISIBLE ON ALL SCREENS */}
             <button 
               onClick={() => setMenuOpen(!menuOpen)} 
-              className="w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+              className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full border border-ash hover:border-neon transition-all"
+              aria-label="Menu"
             >
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : ''}`}></span>
+              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}></span>
             </button>
           </div>
         </div>
       </nav>
 
-      {/* ====== MOBILE MENU ====== */}
-      <div className={`fixed inset-0 z-40 bg-void/98 backdrop-blur-xl transition-all duration-500 flex flex-col items-center justify-center gap-8 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <a href="/#drops" onClick={handleLinkClick} className="font-display text-4xl tracking-[0.1em] text-white hover:text-neon transition-colors">DROPS</a>
-        <a href="/shop" onClick={handleLinkClick} className="font-display text-4xl tracking-[0.1em] text-white hover:text-neon transition-colors">SHOP</a>
-        <a href="/#culture" onClick={handleLinkClick} className="font-display text-4xl tracking-[0.1em] text-white hover:text-neon transition-colors">CULTURE</a>
-        <a href="/#lookbook" onClick={handleLinkClick} className="font-display text-4xl tracking-[0.1em] text-white hover:text-neon transition-colors">LOOKBOOK</a>
-        <a href="/contact" onClick={handleLinkClick} className="font-display text-4xl tracking-[0.1em] text-white hover:text-neon transition-colors">CONTACT</a>
-        
-        <div className="mt-8 flex items-center gap-2 text-smoke text-xs tracking-wide">
-          <span>🇪🇬</span>
-          <span>Local Streetwear</span>
+      {/* ====== FULL SCREEN MENU ====== */}
+      <div 
+        className={`fixed inset-0 z-40 bg-void transition-all duration-500 flex flex-col items-center justify-center gap-6 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        style={{marginTop: '0'}}
+      >
+        {/* Big neon OS in background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[300px] md:text-[400px] text-white/[0.02] leading-none select-none pointer-events-none">
+          OS
+        </div>
+
+        {/* Menu Links */}
+        <a 
+          href="/#drops" 
+          onClick={handleLinkClick} 
+          className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]"
+        >
+          DROPS
+        </a>
+        <a 
+          href="/shop" 
+          onClick={handleLinkClick} 
+          className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]"
+        >
+          SHOP
+        </a>
+        <a 
+          href="/#culture" 
+          onClick={handleLinkClick} 
+          className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]"
+        >
+          CULTURE
+        </a>
+        <a 
+          href="/#lookbook" 
+          onClick={handleLinkClick} 
+          className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]"
+        >
+          LOOKBOOK
+        </a>
+        <a 
+          href="/contact" 
+          onClick={handleLinkClick} 
+          className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]"
+        >
+          CONTACT
+        </a>
+
+        {/* Bottom info */}
+        <div className="absolute bottom-8 flex flex-col items-center gap-2">
+          <div className="flex items-center gap-2 text-smoke/40 text-[10px] tracking-[0.2em] uppercase">
+            <span>🇪🇬</span>
+            <span>Local Streetwear</span>
+          </div>
         </div>
       </div>
     </>

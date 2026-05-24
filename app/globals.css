@@ -1,43 +1,5 @@
 @import "tailwindcss";
-/* ====== SNIPCART CART OVERRIDES ====== */
-/* Cart drawer background - dark theme */
-.snipcart-modal__close-icon path {
-  stroke: #FFFFFF !important;
-}
 
-/* Make sure cart is dark themed */
-#snipcart .snipcart-cart {
-  background: #141414 !important;
-  color: #FFFFFF !important;
-}
-
-/* Cart items container more spacing */
-#snipcart .snipcart-item-list {
-  padding: 8px 0 !important;
-}
-
-/* Footer/Checkout area */
-#snipcart .snipcart-cart__footer {
-  background: #0A0A0A !important;
-  border-top: 1px solid #333 !important;
-  padding: 20px !important;
-}
-
-/* Checkout button styling */
-#snipcart .snipcart-cart__checkout-button {
-  background: #39FF14 !important;
-  color: #0A0A0A !important;
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  border-radius: 50px !important;
-  padding: 16px !important;
-}
-
-#snipcart .snipcart-cart__checkout-button:hover {
-  background: #FFFFFF !important;
-}
 
 @theme {
   --color-void: #0A0A0A;
@@ -160,4 +122,8 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.size-btn:hover { border-color: #39FF14; color: #39FF14; }
+.size-btn.active { 
+  background: #39FF14; color: #0A0A0A; border-color: #39FF14; 
 }
