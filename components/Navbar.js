@@ -9,7 +9,7 @@ export default function Navbar() {
   useEffect(() => {
     const updateCount = () => {
       try {
-        if (window.Snipcart) {
+        if (window.Snipcart && window.Snipcart.api) {
           const count = window.Snipcart.store.getState().cart.items.count;
           setCartCount(count || 0);
         }
@@ -17,25 +17,29 @@ export default function Navbar() {
     };
 
     const checkReady = setInterval(() => {
-      if (window.Snipcart) {
+      if (window.Snipcart && window.Snipcart.api) {
         clearInterval(checkReady);
         updateCount();
-        window.Snipcart.events.on('item.added', updateCount);
-        window.Snipcart.events.on('item.removed', updateCount);
-        window.Snipcart.events.on('cart.opened', updateCount);
-        window.Snipcart.events.on('cart.closed', updateCount);
+
+        window.Snipcart.events.on("item.added", updateCount);
+        window.Snipcart.events.on("item.removed", updateCount);
+        window.Snipcart.events.on("cart.opened", updateCount);
+        window.Snipcart.events.on("cart.closed", updateCount);
       }
     }, 500);
 
     return () => clearInterval(checkReady);
   }, []);
 
+  // ✅ CORRECT WAY to open cart
   const openCart = () => {
     try {
-      if (window.Snipcart) {
-        window.Snipcart.theme.cart.open();
+      if (window.Snipcart && window.Snipcart.api) {
+        window.Snipcart.api.cart.open();
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log("Cart not ready yet");
+    }
   };
 
   const handleLinkClick = () => {
@@ -49,7 +53,7 @@ export default function Navbar() {
           <a href="/" className="font-display text-3xl tracking-wider text-neon animate-pulse-neon">OS</a>
 
           <div className="flex items-center gap-3">
-            {/* Cart Button — opens cart programmatically */}
+            {/* Cart Icon — opens cart on click */}
             <button 
               onClick={openCart}
               className="relative w-9 h-9 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center"
