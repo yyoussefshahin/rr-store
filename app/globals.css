@@ -93,68 +93,92 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-/* ====== SNIPCART CUSTOM STYLES ====== */
+/* =========================
+   FIX SNIPCART CART LAYOUT
+========================= */
 
-/* Make our custom cart button look right */
-.custom-cart-btn {
-  position: relative !important;
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 50% !important;
-  background: transparent !important;
-  border: 1px solid #333 !important;
-  color: #888 !important;
-  box-shadow: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  left: auto !important;
-  float: none !important;
-}
-.custom-cart-btn:hover {
-  border-color: #39FF14 !important;
-  color: #39FF14 !important;
-}
-
-/* Cart count badge */
-.custom-cart-badge {
-  position: absolute !important;
-  top: -6px !important;
-  right: -6px !important;
-  background: #39FF14 !important;
-  color: #0A0A0A !important;
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  line-height: 1 !important;
-}
-
-/* Make Snipcart cart items BIGGER in checkout */
+/* Main cart row */
 .snipcart-item-line {
-  padding: 16px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  flex-wrap: wrap !important;
+   padding: 20px 0 !important;
 }
-.snipcart-item-line__image {
-  width: 80px !important;
-  height: 80px !important;
-  border-radius: 10px !important;
+
+/* Left section */
+.snipcart-item-line__container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
 }
+
+/* Product info */
+.snipcart-item-line__content {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Title */
 .snipcart-item-line__title {
-  font-size: 15px !important;
+  font-size: 16px !important;
   font-weight: 700 !important;
+  color: white !important;
+  margin-bottom: 4px !important;
 }
+
+/* Variant / size */
+.snipcart-item-line__variant {
+  color: #888 !important;
+  font-size: 13px !important;
+}
+
+/* Quantity + price area */
+.snipcart-item-line__product {
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;
+  margin-left: auto !important;
+}
+
+/* Quantity selector */
+.snipcart-item-quantity {
+  border: 1px solid #333 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* Price */
 .snipcart-item-line__price {
-  font-size: 15px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
   color: #39FF14 !important;
+  min-width: 90px !important;
+  text-align: right !important;
+}
+
+/* Delete button */
+.snipcart-item-line__actions {
+  margin-left: 12px !important;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .snipcart-item-line {
+    align-items: flex-start !important;
+  }
+
+  .snipcart-item-line__product {
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin-top: 12px !important;
+  }
+
+  .snipcart-item-line__image {
+    width: 70px !important;
+    height: 70px !important;
+  }
 }
