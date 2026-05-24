@@ -11,10 +11,7 @@ export default function SnipcartSetup() {
     div.id = "snipcart";
     div.hidden = true;
     div.setAttribute("data-api-key", "MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw");
-    
-    // Stay on page when adding to cart
     div.setAttribute("data-config-open_cart_on_add", "false");
-    
     document.body.appendChild(div);
 
     const link = document.createElement("link");

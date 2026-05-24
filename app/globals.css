@@ -93,3 +93,68 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+/* ====== SNIPCART CUSTOM STYLES ====== */
+
+/* Make our custom cart button look right */
+.custom-cart-btn {
+  position: relative !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: 1px solid #333 !important;
+  color: #888 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  float: none !important;
+}
+.custom-cart-btn:hover {
+  border-color: #39FF14 !important;
+  color: #39FF14 !important;
+}
+
+/* Cart count badge */
+.custom-cart-badge {
+  position: absolute !important;
+  top: -6px !important;
+  right: -6px !important;
+  background: #39FF14 !important;
+  color: #0A0A0A !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+/* Make Snipcart cart items BIGGER in checkout */
+.snipcart-item-line {
+  padding: 16px 0 !important;
+}
+.snipcart-item-line__image {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 10px !important;
+}
+.snipcart-item-line__title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+.snipcart-item-line__price {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #39FF14 !important;
+}

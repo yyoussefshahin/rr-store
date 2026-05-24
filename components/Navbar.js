@@ -1,38 +1,8 @@
 "use client";
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Navbar() {
-  const [cartCount, setCartCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const updateCount = () => {
-      try {
-        if (window.Snipcart) {
-          const count = window.Snipcart.store.getState().cart.items.count;
-          setCartCount(count || 0);
-        }
-      } catch (e) {}
-    };
-
-    const checkReady = setInterval(() => {
-      if (window.Snipcart) {
-        clearInterval(checkReady);
-        updateCount();
-        window.Snipcart.events.on("item.added", updateCount);
-        window.Snipcart.events.on("item.removed", updateCount);
-        window.Snipcart.events.on("cart.opened", updateCount);
-        window.Snipcart.events.on("cart.closed", updateCount);
-      }
-    }, 500);
-
-    return () => clearInterval(checkReady);
-  }, []);
-
-  const handleLinkClick = () => {
-    setMenuOpen(false);
-  };
 
   return (
     <>
@@ -42,30 +12,15 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             
-            {/* HIDDEN Snipcart button (Required for Snipcart to work!) */}
-            <button className="snipcart-checkout" style={{ display: 'none' }}></button>
-
-            {/* VISIBLE Cart Icon - clicks the hidden Snipcart button */}
-            <button 
-              onClick={() => {
-                const hiddenBtn = document.querySelector('.snipcart-checkout');
-                if (hiddenBtn) hiddenBtn.click();
-              }}
-              className="relative w-9 h-9 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center"
-            >
+            {/* OFFICIAL SNIPCART CART BUTTON */}
+            <button className="snipcart-checkout custom-cart-btn">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-neon text-void text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
+              {/* Snipcart automatically updates this number! */}
+              <span className="snipcart-total-items custom-cart-badge">0</span>
             </button>
 
             {/* Hamburger */}
-            <button 
-              onClick={() => setMenuOpen(!menuOpen)} 
-              className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full border border-ash hover:border-neon transition-all"
-            >
+            <button onClick={() => setMenuOpen(!menuOpen)} className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full border border-ash hover:border-neon transition-all">
               <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}></span>
               <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : ''}`}></span>
               <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}></span>
@@ -77,14 +32,12 @@ export default function Navbar() {
       {/* Full Screen Menu */}
       <div className={`fixed inset-0 z-40 bg-void transition-all duration-500 flex flex-col items-center justify-center gap-6 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[300px] md:text-[400px] text-white/[0.02] leading-none select-none pointer-events-none">OS</div>
-        <a href="/#drops" onClick={handleLinkClick} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">DROPS</a>
-        <a href="/shop" onClick={handleLinkClick} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">SHOP</a>
-        <a href="/#culture" onClick={handleLinkClick} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CULTURE</a>
-        <a href="/#lookbook" onClick={handleLinkClick} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">LOOKBOOK</a>
-        <a href="/contact" onClick={handleLinkClick} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CONTACT</a>
-        <div className="absolute bottom-8 flex items-center gap-2 text-smoke/40 text-[10px] tracking-[0.2em] uppercase">
-          <span>🇪🇬</span><span>Local Streetwear</span>
-        </div>
+        <a href="/#drops" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">DROPS</a>
+        <a href="/shop" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">SHOP</a>
+        <a href="/#culture" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CULTURE</a>
+        <a href="/#lookbook" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">LOOKBOOK</a>
+        <a href="/contact" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CONTACT</a>
+        <div className="absolute bottom-8 flex items-center gap-2 text-smoke/40 text-[10px] tracking-[0.2em] uppercase"><span>🇪🇬</span><span>Local Streetwear</span></div>
       </div>
     </>
   );

@@ -27,11 +27,7 @@ export default function ProductCard({ product }) {
 
       <div className="mt-2 flex items-center gap-1 flex-wrap">
         {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-          <button 
-            key={size} 
-            className={`size-btn text-[10px] px-2 py-1 ${size === 'M' ? 'active' : ''}`} 
-            onClick={(e) => handleSizeSelect(e, product.id, size)}
-          >
+          <button key={size} className={`size-btn text-[10px] px-2 py-1 ${size === 'M' ? 'active' : ''}`} onClick={(e) => handleSizeSelect(e, product.id, size)}>
             {size}
           </button>
         ))}
