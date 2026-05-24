@@ -28,16 +28,7 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
 /* Selection */
 ::selection { background: #39FF14; color: #0A0A0A; }
 
-/* Snipcart Button */
-.snipcart-checkout { 
-  position: fixed; bottom: 24px; right: 24px; z-index: 90;
-  width: 56px; height: 56px; border-radius: 50%;
-  background: #39FF14; border: none;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 30px rgba(57,255,20,0.4); cursor: pointer;
-  transition: all 0.3s ease;
-}
-.snipcart-checkout:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(57,255,20,0.6); }
+
 
 /* Animations */
 @keyframes glitch1 {
