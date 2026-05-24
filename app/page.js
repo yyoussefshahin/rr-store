@@ -48,7 +48,7 @@ export default function Home() {
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <div className="animate-slide-up">
             <span className="inline-block px-4 py-1.5 text-[10px] font-bold tracking-[0.3em] uppercase text-neon border border-neon/30 rounded-full bg-neon/5 mb-6">
-              🔥 New Drop — Summer 25
+              🔥 New Drop — Summer 26
             </span>
           </div>
           
@@ -454,7 +454,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-ash flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-[10px] text-smoke/40 tracking-wide">© 2025 OS. All rights reserved.</p>
+            <p className="text-[10px] text-smoke/40 tracking-wide">© 2026 OS. All rights reserved.</p>
             <p className="text-[10px] text-smoke/40 tracking-wide">Made in Egypt 🇪🇬 with 💚</p>
           </div>
         </div>
