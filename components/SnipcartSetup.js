@@ -11,7 +11,7 @@ export default function SnipcartSetup() {
     const div = document.createElement("div");
     div.id = "snipcart";
     div.hidden = true;
-    div.setAttribute("data-api-key","CLIENT_API_KEY_HERE");
+    div.setAttribute("data-api-key","MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw");
     document.body.appendChild(div);
 
     // 2. Load the CSS
