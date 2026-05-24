@@ -7,11 +7,18 @@ export default function SnipcartSetup() {
     if (typeof window === "undefined") return;
     if (document.getElementById("snipcart")) return;
 
-    // 1. Create the hidden div with your API key (This is the official Snipcart way!)
+    // 1. Create the hidden div with config settings
     const div = document.createElement("div");
     div.id = "snipcart";
     div.hidden = true;
-    div.setAttribute("data-api-key","MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw");
+    div.setAttribute("data-api-key", "MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw"); // ← YOUR KEY HERE
+    
+    // FIX: Don't auto-open cart when item is added
+    div.setAttribute("data-config-open_cart_on_add", "false");
+    
+    // FIX: Continue Shopping button goes to homepage
+    div.setAttribute("data-config-continue_shopping_url", "/");
+    
     document.body.appendChild(div);
 
     // 2. Load the CSS
