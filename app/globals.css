@@ -97,88 +97,236 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
    FIX SNIPCART CART LAYOUT
 ========================= */
 
-/* Main cart row */
-.snipcart-item-line {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 20px !important;
-  flex-wrap: wrap !important;
-   padding: 20px 0 !important;
+/* ===== CART DRAWER ===== */
+.snipcart-modal {
+  max-width: 460px !important;
 }
 
-/* Left section */
+/* Dark theme background */
+#snipcart .snipcart-cart,
+.snipcart-cart {
+  background: #141414 !important;
+  color: #FFFFFF !important;
+}
+
+/* ===== CART ITEM ROW — COMPACT ===== */
+.snipcart-item-line {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+/* Left: image + info */
 .snipcart-item-line__container {
   display: flex !important;
   align-items: center !important;
-  gap: 18px !important;
+  gap: 12px !important;
   flex: 1 !important;
   min-width: 0 !important;
+}
+
+/* Product image — smaller */
+.snipcart-item-line__image {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 8px !important;
+  flex-shrink: 0 !important;
+  object-fit: cover !important;
 }
 
 /* Product info */
 .snipcart-item-line__content {
   flex: 1 !important;
   min-width: 0 !important;
-}
-
-/* Title */
-.snipcart-item-line__title {
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  color: white !important;
-  margin-bottom: 4px !important;
-}
-
-/* Variant / size */
-.snipcart-item-line__variant {
-  color: #888 !important;
-  font-size: 13px !important;
-}
-
-/* Quantity + price area */
-.snipcart-item-line__product {
-  display: flex !important;
-  align-items: center !important;
-  gap: 24px !important;
-  margin-left: auto !important;
-}
-
-/* Quantity selector */
-.snipcart-item-quantity {
-  border: 1px solid #333 !important;
-  border-radius: 10px !important;
   overflow: hidden !important;
 }
 
-/* Price */
+/* Title — compact */
+.snipcart-item-line__title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 2px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 180px !important;
+}
+
+/* Size / variant */
+.snipcart-item-line__variant {
+  color: #888 !important;
+  font-size: 12px !important;
+  margin-bottom: 4px !important;
+}
+
+/* ===== RIGHT SIDE: QTY + PRICE ===== */
+.snipcart-item-line__product {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Quantity selector — compact */
+.snipcart-item-quantity {
+  display: flex !important;
+  align-items: center !important;
+  border: 1px solid #333 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  height: 28px !important;
+}
+
+.snipcart-item-quantity__btn {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1E1E1E !important;
+  color: #888 !important;
+  border: none !important;
+}
+
+.snipcart-item-quantity__btn:hover {
+  color: #39FF14 !important;
+}
+
+.snipcart-item-quantity__quantity {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  width: 28px !important;
+  text-align: center !important;
+}
+
+/* Price — compact */
 .snipcart-item-line__price {
-  font-size: 18px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #39FF14 !important;
-  min-width: 90px !important;
-  text-align: right !important;
+  white-space: nowrap !important;
 }
 
-/* Delete button */
+/* Remove button */
 .snipcart-item-line__actions {
-  margin-left: 12px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-/* Mobile fix */
-@media (max-width: 768px) {
-  .snipcart-item-line {
-    align-items: flex-start !important;
+.snipcart-item-line__remove {
+  font-size: 11px !important;
+  color: #888 !important;
+}
+
+.snipcart-item-line__remove:hover {
+  color: #FF3366 !important;
+}
+
+/* ===== CART HEADER ===== */
+.snipcart-cart-header {
+  padding: 16px 20px !important;
+  border-bottom: 1px solid #333 !important;
+}
+
+.snipcart-cart-header__title {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+}
+
+.snipcart-cart-header__close-button {
+  color: #888 !important;
+}
+
+/* ===== CART FOOTER ===== */
+.snipcart-cart__footer {
+  background: #0A0A0A !important;
+  border-top: 1px solid #333 !important;
+  padding: 16px 20px !important;
+}
+
+.snipcart-summary-fees {
+  padding: 8px 0 !important;
+}
+
+.snipcart-summary-fees__item {
+  font-size: 13px !important;
+  color: #888 !important;
+  padding: 4px 0 !important;
+}
+
+.snipcart-summary-fees__total-price {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #39FF14 !important;
+  padding: 8px 0 !important;
+}
+
+/* Checkout button */
+.snipcart-cart__checkout-button {
+  background: #39FF14 !important;
+  color: #0A0A0A !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border-radius: 50px !important;
+  padding: 14px !important;
+  margin-top: 8px !important;
+}
+
+.snipcart-cart__checkout-button:hover {
+  background: #FFFFFF !important;
+}
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 640px) {
+  .snipcart-modal {
+    max-width: 100% !important;
   }
 
-  .snipcart-item-line__product {
-    width: 100% !important;
-    justify-content: space-between !important;
-    margin-top: 12px !important;
+  .snipcart-item-line {
+    gap: 8px !important;
+    padding: 10px 0 !important;
   }
 
   .snipcart-item-line__image {
-    width: 70px !important;
-    height: 70px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .snipcart-item-line__title {
+    font-size: 13px !important;
+    max-width: 120px !important;
+  }
+
+  .snipcart-item-line__variant {
+    font-size: 11px !important;
+  }
+
+  .snipcart-item-line__price {
+    font-size: 13px !important;
+  }
+
+  .snipcart-item-quantity {
+    height: 26px !important;
+  }
+
+  .snipcart-item-quantity__btn {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 12px !important;
+  }
+
+  .snipcart-item-quantity__quantity {
+    font-size: 12px !important;
+    width: 24px !important;
   }
 }

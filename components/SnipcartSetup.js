@@ -11,12 +11,11 @@ export default function SnipcartSetup() {
     div.id = "snipcart";
     div.hidden = true;
     div.setAttribute("data-api-key", "MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw");
-    
-    // DO NOT open cart when item is added
     div.setAttribute("data-config-open_cart_on_add", "false");
-    
-    // DISABLE product validation — this fixes the infinite loading!
     div.setAttribute("data-config-product_validation_enabled", "false");
+    
+    // SET CURRENCY TO EGYPTIAN POUND
+    div.setAttribute("data-config-currency", "EGP");
     
     document.body.appendChild(div);
 
