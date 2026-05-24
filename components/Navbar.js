@@ -9,7 +9,7 @@ export default function Navbar() {
   useEffect(() => {
     const updateCount = () => {
       try {
-        if (window.Snipcart && window.Snipcart.api) {
+        if (window.Snipcart) {
           const count = window.Snipcart.store.getState().cart.items.count;
           setCartCount(count || 0);
         }
@@ -17,10 +17,9 @@ export default function Navbar() {
     };
 
     const checkReady = setInterval(() => {
-      if (window.Snipcart && window.Snipcart.api) {
+      if (window.Snipcart) {
         clearInterval(checkReady);
         updateCount();
-
         window.Snipcart.events.on("item.added", updateCount);
         window.Snipcart.events.on("item.removed", updateCount);
         window.Snipcart.events.on("cart.opened", updateCount);
@@ -30,17 +29,6 @@ export default function Navbar() {
 
     return () => clearInterval(checkReady);
   }, []);
-
-  // ✅ CORRECT WAY to open cart
-  const openCart = () => {
-    try {
-      if (window.Snipcart && window.Snipcart.api) {
-        window.Snipcart.api.cart.open();
-      }
-    } catch (e) {
-      console.log("Cart not ready yet");
-    }
-  };
 
   const handleLinkClick = () => {
     setMenuOpen(false);
@@ -53,9 +41,16 @@ export default function Navbar() {
           <a href="/" className="font-display text-3xl tracking-wider text-neon animate-pulse-neon">OS</a>
 
           <div className="flex items-center gap-3">
-            {/* Cart Icon — opens cart on click */}
+            
+            {/* HIDDEN Snipcart button (Required for Snipcart to work!) */}
+            <button className="snipcart-checkout" style={{ display: 'none' }}></button>
+
+            {/* VISIBLE Cart Icon - clicks the hidden Snipcart button */}
             <button 
-              onClick={openCart}
+              onClick={() => {
+                const hiddenBtn = document.querySelector('.snipcart-checkout');
+                if (hiddenBtn) hiddenBtn.click();
+              }}
               className="relative w-9 h-9 rounded-full border border-ash text-smoke hover:border-neon hover:text-neon transition-all flex items-center justify-center"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
