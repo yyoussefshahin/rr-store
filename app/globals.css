@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme {
   --color-void: #0A0A0A;
   --color-void-light: #141414;
@@ -20,24 +19,11 @@
 html { scroll-behavior: smooth; }
 body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
 ::-webkit-scrollbar-thumb { background: #39FF14; border-radius: 3px; }
 
-/* Selection */
 ::selection { background: #39FF14; color: #0A0A0A; }
-
-
-
-/* Animations */
-@keyframes glitch1 {
-  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-  20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 3px); }
-  40% { clip-path: inset(60% 0 10% 0); transform: translate(3px, -3px); }
-  60% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 2px); }
-  80% { clip-path: inset(10% 0 80% 0); transform: translate(2px, -2px); }
-}
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -86,7 +72,6 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   100% { transform: translateY(0); opacity: 0; }
 }
 
-/* Size Buttons */
 .size-btn {
   padding: 8px 16px; font-size: 12px; font-weight: 600;
   border: 1px solid #333; border-radius: 8px;
@@ -99,22 +84,12 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   background: #39FF14; color: #0A0A0A; border-color: #39FF14; 
 }
 
-/* Product card hover */
-.product-card:hover .product-img {
-  transform: scale(1.05);
-}
-.product-card:hover .product-overlay {
-  opacity: 1;
-}
+.product-card:hover .product-img { transform: scale(1.05); }
+.product-card:hover .product-overlay { opacity: 1; }
 
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #39FF14, #00F0FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-.size-btn:hover { border-color: #39FF14; color: #39FF14; }
-.size-btn.active { 
-  background: #39FF14; color: #0A0A0A; border-color: #39FF14; 
 }

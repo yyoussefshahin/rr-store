@@ -41,7 +41,7 @@ export default function ProductCard({ product }) {
         className="snipcart-add-item mt-2 w-full py-2.5 bg-neon/10 text-neon text-[10px] font-bold tracking-[0.1em] uppercase rounded-lg border border-neon/20 hover:bg-neon hover:text-void transition-all duration-300 flex items-center justify-center gap-1.5"
         data-item-id={product.id}
         data-item-price={product.price}
-        data-item-url="/"
+        data-item-url="https://rr-store-kappa.vercel.app/"
         data-item-description={product.desc}
         data-item-image={product.image}
         data-item-name={`${product.name} — ${product.desc}`}
