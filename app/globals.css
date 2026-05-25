@@ -4,10 +4,10 @@
   --color-void: #0A0A0A;
   --color-void-light: #141414;
   --color-void-lighter: #1E1E1E;
-  --color-neon: #39FF14;
-  --color-neon-dim: #2BCC10;
-  --color-electric: #00F0FF;
-  --color-hot: #FF3366;
+  --color-neon: #FF69B4;
+  --color-neon-dim: #E8599E;
+  --color-electric: #DDA0DD;
+  --color-hot: #FF1493;
   --color-amber: #FFB800;
   --color-smoke: #888888;
   --color-ash: #333333;
@@ -21,9 +21,9 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #39FF14; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #FF69B4; border-radius: 3px; }
 
-::selection { background: #39FF14; color: #0A0A0A; }
+::selection { background: #FF69B4; color: #0A0A0A; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -32,8 +32,8 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
 .animate-float { animation: float 4s ease-in-out infinite; }
 
 @keyframes pulse-neon {
-  0%, 100% { text-shadow: 0 0 10px rgba(57,255,20,0.5), 0 0 40px rgba(57,255,20,0.2); }
-  50% { text-shadow: 0 0 20px rgba(57,255,20,0.8), 0 0 60px rgba(57,255,20,0.4); }
+  0%, 100% { text-shadow: 0 0 10px rgba(255,105,180,0.5), 0 0 40px rgba(255,105,180,0.2); }
+  50% { text-shadow: 0 0 20px rgba(255,105,180,0.8), 0 0 60px rgba(255,105,180,0.4); }
 }
 .animate-pulse-neon { animation: pulse-neon 3s ease-in-out infinite; }
 
@@ -79,16 +79,16 @@ body { background: #0A0A0A; font-family: "Inter", sans-serif; color: #FFFFFF; }
   background: transparent; color: #888;
   text-transform: uppercase; letter-spacing: 0.05em;
 }
-.size-btn:hover { border-color: #39FF14; color: #39FF14; }
+.size-btn:hover { border-color: #FF69B4; color: #FF69B4; }
 .size-btn.active { 
-  background: #39FF14; color: #0A0A0A; border-color: #39FF14; 
+  background: #FF69B4; color: #0A0A0A; border-color: #FF69B4; 
 }
 
 .product-card:hover .product-img { transform: scale(1.05); }
 .product-card:hover .product-overlay { opacity: 1; }
 
 .gradient-text {
-  background: linear-gradient(135deg, #39FF14, #00F0FF);
+  background: linear-gradient(135deg, #FF69B4, #DDA0DD);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
