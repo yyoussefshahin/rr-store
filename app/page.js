@@ -71,6 +71,85 @@ export default function Home() {
           ))}
         </div>
       </section>
+         
+               {/* ====== NEW IN ====== */}
+      <section className="py-20 md:py-28 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          
+          {/* Section Header */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-px bg-seirra-black"></div>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-seirra-gray">Just Dropped</span>
+            </div>
+            <a href="/shop" className="group flex items-center gap-2 text-[10px] font-medium tracking-[0.15em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">
+              Shop All
+              <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+          
+          {/* Big Title */}
+          <h2 className="newin-title font-display text-[70px] md:text-[110px] lg:text-[140px] leading-[0.85] tracking-[0.02em] text-seirra-black">
+            NEW <span className="font-light">IN</span>
+          </h2>
+          
+          {/* Animated Line */}
+          <div className="mt-4 mb-12 h-[2px] bg-seirra-light overflow-hidden">
+            <div className="animate-newin-line h-full bg-seirra-black w-full"></div>
+          </div>
+          
+          {/* New Products Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {products.slice(0, 4).map((p, i) => (
+              <div key={p.id} className={`animate-newin-card newin-delay-${i+1} group cursor-pointer`}>
+                <div className="relative overflow-hidden aspect-[3/4] bg-seirra-light">
+                  <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                  
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
+                  
+                  {/* Badge */}
+                  {p.tag && (
+                    <div className="absolute top-3 left-3">
+                      <span className={`animate-newin-badge tag-${p.tagClass} px-3 py-1 text-[8px] font-bold tracking-[0.2em] uppercase inline-block`}>
+                        {p.tag}
+                      </span>
+                    </div>
+                  )}
+                  
+                  {/* Quick add on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <button 
+                      className="snipcart-add-item w-full py-2.5 bg-seirra-black/90 backdrop-blur-sm text-white text-[9px] font-medium tracking-[0.12em] uppercase hover:bg-seirra-black transition-all"
+                      data-item-id={p.id}
+                      data-item-price={p.price}
+                      data-item-url="https://rr-store-kappa.vercel.app/shop"
+                      data-item-description={p.desc}
+                      data-item-image={p.image}
+                      data-item-name={`${p.name} — ${p.desc}`}
+                      data-item-custom1-name="Size"
+                      data-item-custom1-value="M"
+                      data-item-custom1-options="S|M|L|XL"
+                    >
+                      + Quick Add
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="mt-3">
+                  <h3 className="text-[13px] font-medium text-seirra-black tracking-wide">{p.name}</h3>
+                  <p className="text-[10px] text-seirra-gray mt-0.5">{p.desc}</p>
+                  <span className="text-[13px] font-semibold text-seirra-black block mt-1">EGP {Math.round(Number(p.price))}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
+
 
       {/* ====== FEATURED COLLECTION ====== */}
       <section id="collection" className="py-16 md:py-24 bg-white">

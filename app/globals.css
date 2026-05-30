@@ -212,3 +212,41 @@ body { background: #FFFFFF; font-family: "Inter", sans-serif; color: #0A0A0A; }
   );
   animation: tagShimmer 3s ease-in-out infinite;
 }
+
+/* ====== NEW IN SECTION ====== */
+@keyframes newInSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-newin-scroll { animation: newInSlide 40s linear infinite; }
+
+@keyframes newInGlow {
+  0%, 100% { text-shadow: 0 0 0px transparent; }
+  50% { text-shadow: 0 0 60px rgba(10,10,10,0.08); }
+}
+
+@keyframes newInLine {
+  0% { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}
+.animate-newin-line { animation: newInLine 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+.newin-title {
+  animation: newInGlow 4s ease-in-out infinite;
+}
+
+@keyframes newInReveal {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-newin-card { animation: newInReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.newin-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.newin-delay-2 { animation-delay: 0.25s; opacity: 0; }
+.newin-delay-3 { animation-delay: 0.4s; opacity: 0; }
+.newin-delay-4 { animation-delay: 0.55s; opacity: 0; }
+
+@keyframes newInBadge {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.02); }
+}
+.animate-newin-badge { animation: newInBadge 3s ease-in-out infinite; }
