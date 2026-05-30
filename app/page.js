@@ -26,7 +26,13 @@ export default function Home() {
         
         <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-16">
           {/* ✅ HERO TAG WITH COOL EFFECT */}
-          <div className="animate-fade-in">
+                   <div className="animate-fade-in">
+            {/* Small NEW IN text */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-6 h-px bg-white/40"></div>
+              <span className="text-[9px] font-bold tracking-[0.35em] uppercase text-white/70">New In</span>
+              <div className="w-6 h-px bg-white/40"></div>
+            </div>
             <span className="hero-tag inline-block px-6 py-2 text-[10px] font-semibold tracking-[0.3em] uppercase text-white rounded-full mb-8">
               Summer 2026 Collection
             </span>
