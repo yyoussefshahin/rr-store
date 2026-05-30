@@ -1,9 +1,49 @@
 "use client";
 
+import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
 export default function CartDrawer() {
   const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal } = useCart();
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+
+    try {
+      // 1. Ask our secure backend for the Kashier signature
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: cartTotal })
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        alert('Payment setup failed: ' + data.error);
+        setLoading(false);
+        return;
+      }
+
+      // 2. Build the Kashier URL
+      const redirectUrl = 'https://rr-store-kappa.vercel.app/shop';
+      
+      const kashierUrl = `https://checkout.kashier.io/?merchantId=${data.merchantId}&amount=${data.amount}&currency=${data.currency}&merchantOrderId=${data.merchantOrderId}&signature=${data.signature}&mode=${data.mode}&redirectUrl=${redirectUrl}`;
+      
+      // 3. Log the URL so we can see it in the console
+      console.log("Redirecting to Kashier:", kashierUrl);
+
+      // 4. Redirect
+      window.location.href = kashierUrl;
+
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!isCartOpen) return null;
 
@@ -66,12 +106,13 @@ export default function CartDrawer() {
               <span className="text-lg font-bold">EGP {cartTotal}</span>
             </div>
             <button 
-              className="w-full py-4 bg-seirra-black text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-black/80 transition-all"
-              onClick={() => alert('Kashier Payment will go here!')}
+              className="w-full py-4 bg-seirra-black text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-black/80 transition-all disabled:opacity-50"
+              onClick={handleCheckout}
+              disabled={loading}
             >
-              Checkout — EGP {cartTotal}
+              {loading ? 'Redirecting to Payment...' : `Checkout — EGP ${cartTotal}`}
             </button>
-            <p className="text-center text-[9px] text-gray-300 mt-3 tracking-wide">Shipping & taxes calculated at checkout</p>
+            <p className="text-center text-[9px] text-gray-300 mt-3 tracking-wide">Secure payment via Kashier</p>
           </div>
         )}
       </div>
