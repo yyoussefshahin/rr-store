@@ -1,3 +1,5 @@
+export const runtime = 'nodejs'; // <-- ADD THIS LINE TO FIX THE DEPLOYMENT!
+
 import { NextResponse } from 'next/server';
 import { createHmac } from 'crypto';
 
