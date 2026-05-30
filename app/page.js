@@ -11,7 +11,6 @@ export default function Home() {
 
       {/* ====== VIDEO HERO ====== */}
       <section className="relative h-screen overflow-hidden">
-        {/* Video Background */}
         <video 
           autoPlay 
           muted 
@@ -20,22 +19,20 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover"
           poster="https://picsum.photos/seed/seirra-hero/1920/1080.jpg"
         >
-          {/* Replace this URL with your client's video */}
           <source src="https://cdn.coverr.co/videos/coverr-woman-walking-on-the-beach-1573/1080p.mp4" type="video/mp4"/>
         </video>
         
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"></div>
         
-        {/* Hero Content */}
         <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-16">
+          {/* ✅ HERO TAG WITH COOL EFFECT */}
           <div className="animate-fade-in">
-            <span className="inline-block px-4 py-1.5 text-[9px] font-medium tracking-[0.3em] uppercase text-white/70 border border-white/20 rounded-full mb-6">
-              Winter 2025 Collection
+            <span className="hero-tag inline-block px-6 py-2 text-[10px] font-semibold tracking-[0.3em] uppercase text-white rounded-full mb-8">
+              Summer 2026 Collection
             </span>
           </div>
           <h1 className="animate-fade-in fade-delay-1">
-            <span className="font-display block text-[60px] md:text-[100px] lg:text-[130px] leading-[0.85] tracking-[0.04em] text-white">WINTER</span>
+            <span className="font-display block text-[60px] md:text-[100px] lg:text-[130px] leading-[0.85] tracking-[0.04em] text-white">SUMMER</span>
             <span className="font-display block text-[60px] md:text-[100px] lg:text-[130px] leading-[0.85] tracking-[0.04em] text-white/60">COLLECTION</span>
           </h1>
           <div className="animate-fade-in fade-delay-2 mt-8 flex items-center gap-4">
@@ -48,7 +45,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
           <span className="text-[8px] tracking-[0.3em] uppercase text-white/30 font-medium">Scroll</span>
           <div className="w-px h-6 bg-white/20 relative overflow-hidden">
@@ -66,7 +62,8 @@ export default function Home() {
               <span className="text-white/20">✦</span>
               <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Contemporary Fashion</span>
               <span className="text-white/20">✦</span>
-              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Winter 2025</span>
+              {/* ✅ FIXED: Summer 2026 */}
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Summer 2026</span>
               <span className="text-white/20">✦</span>
               <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Made in Egypt</span>
               <span className="text-white/20">✦</span>
@@ -82,7 +79,7 @@ export default function Home() {
             <div>
               <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-seirra-gray">New Arrivals</span>
               <h2 className="mt-2 text-3xl md:text-4xl font-light tracking-[0.04em] text-seirra-black">
-                WINTER <span className="font-bold">2025</span>
+                SUMMER <span className="font-bold">2026</span>
               </h2>
             </div>
             <a href="/shop" className="group flex items-center gap-2 text-[10px] font-medium tracking-[0.15em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">
@@ -127,7 +124,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="brand-name text-lg tracking-[0.3em] text-seirra-gray">
-            <span className="light">SEI</span><span className="bold">RRA</span>
+            <span className="bold">SEI</span><span className="light">RRA</span>
           </span>
           <h2 className="mt-6 text-2xl md:text-4xl font-light tracking-[0.02em] text-seirra-black leading-snug">
             Fashion that speaks <span className="font-bold">volume</span> without saying a word.
@@ -158,8 +155,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
+              {/* ✅ FIXED: bold SEI + light RRA */}
               <span className="brand-name text-2xl tracking-[0.25em] text-white">
-                <span className="light">SEI</span><span className="bold">RRA</span>
+                <span className="bold">SEI</span><span className="light">RRA</span>
               </span>
               <p className="mt-2 text-[10px] text-white/30 tracking-wide">Contemporary Fashion — Made in Egypt 🇪🇬</p>
             </div>
@@ -178,7 +176,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-white/5 text-center">
-            <p className="text-[9px] text-white/20 tracking-wide">© 2025 SEIRRA. All rights reserved.</p>
+            <p className="text-[9px] text-white/20 tracking-wide">© 2026 SEIRRA. All rights reserved.</p>
           </div>
         </div>
       </footer>

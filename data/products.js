@@ -32,7 +32,7 @@ export const products = [
     desc: "Oversized — Charcoal",
     price: "899.00",
     image: "https://picsum.photos/seed/seirra-hoodie/600/800.jpg",
-    tag: "WINTER",
+    tag: "SUMMER",
     tagColor: "bg-seirra-black text-white",
   },
 ];

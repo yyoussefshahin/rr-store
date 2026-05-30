@@ -13,7 +13,7 @@ export default function Navbar() {
           {/* Left: Brand + Description */}
           <div className="flex items-center gap-3">
             <span className="brand-name text-[11px] tracking-[0.25em]">
-              <span className="light">SEI</span><span className="bold">RRA</span>
+              <span className="bold">SEI</span><span className="light">RRA</span>
             </span>
             <span className="hidden sm:inline text-[9px] text-white/40 tracking-wide">— Contemporary Fashion</span>
           </div>
@@ -45,14 +45,14 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a href="/" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Home</a>
             <a href="/shop?cat=women" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Women</a>
-            <a href="/shop?cat=winter" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Winter 2025</a>
+            <a href="/shop?cat=summer" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Summer 2026</a>
             <a href="/shop?cat=men" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Men</a>
             <a href="/contact" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Contact Us</a>
           </div>
 
           {/* Center: Logo */}
           <a href="/" className="brand-name text-2xl absolute left-1/2 -translate-x-1/2">
-            <span className="light">SEI</span><span className="bold">RRA</span>
+            <span className="bold">SEI</span><span className="light">RRA</span>
           </a>
 
           {/* Right: Cart */}
@@ -67,7 +67,7 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-40 bg-white transition-all duration-500 flex flex-col pt-24 px-8 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <a href="/" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Home</a>
         <a href="/shop?cat=women" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Women</a>
-        <a href="/shop?cat=winter" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Winter 2025</a>
+        <a href="/shop?cat=summer" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Summer 2026</a>
         <a href="/shop?cat=men" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Men</a>
         <a href="/contact" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Contact Us</a>
         
