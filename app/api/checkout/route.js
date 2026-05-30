@@ -17,10 +17,9 @@ export async function POST(request) {
 
     const merchantOrderId = `ORDER-${Date.now()}`;
     const currency = 'EGP';
-    const mode = 'test'; // MUST match the URL
 
-    // FIX: Added mode=test to the signature string exactly how Kashier expects it
-    const signaturePath = `amount=${formattedAmount};currency=${currency};merchantId=${merchantId};merchantOrderId=${merchantOrderId};mode=${mode}`;
+    // FIX: REMOVED mode from signature string. Kashier does not include mode in the hash!
+    const signaturePath = `amount=${formattedAmount};currency=${currency};merchantId=${merchantId};merchantOrderId=${merchantOrderId}`;
     
     const signature = createHmac('sha256', secretKey)
       .update(signaturePath)
@@ -31,7 +30,6 @@ export async function POST(request) {
       merchantOrderId,
       amount: formattedAmount,
       currency,
-      mode,
       signature
     });
   } catch (error) {

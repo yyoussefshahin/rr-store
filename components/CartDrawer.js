@@ -7,7 +7,7 @@ export default function CartDrawer() {
   const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal } = useCart();
   const [loading, setLoading] = useState(false);
 
-  const handleCheckout = async () => {
+    const handleCheckout = async () => {
     setLoading(true);
 
     try {
@@ -26,6 +26,22 @@ export default function CartDrawer() {
         return;
       }
 
+      // 2. Safely encode the redirect URL
+      const redirectUrl = encodeURIComponent('https://rr-store-kappa.vercel.app/');
+      
+      // 3. Redirect to Kashier's secure payment page (hardcoded mode=test)
+      const kashierUrl = `https://checkout.kashier.io/?merchantId=${data.merchantId}&amount=${data.amount}&currency=${data.currency}&merchantOrderId=${data.merchantOrderId}&signature=${data.signature}&mode=test&redirectUrl=${redirectUrl}`;
+      
+      console.log("Redirecting to Kashier:", kashierUrl);
+      window.location.href = kashierUrl;
+
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
       // 2. Build the Kashier URL
       const redirectUrl = 'https://rr-store-kappa.vercel.app/shop';
       
