@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from 'react';
+import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cartCount, setIsCartOpen } = useCart();
 
   return (
     <>
@@ -55,10 +57,15 @@ export default function Navbar() {
             <span className="bold">SEI</span><span className="light">RRA</span>
           </a>
 
-          {/* Right: Cart */}
-          <button className="snipcart-checkout relative flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity">
+          {/* Right: Cart (NOW USES OUR CART!) */}
+          <button 
+            onClick={() => setIsCartOpen(true)} 
+            className="relative flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-            <span className="snipcart-items-count absolute -top-1 -right-1 min-w-[16px] h-4 bg-seirra-black text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">0</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 min-w-[16px] h-4 bg-seirra-black text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">{cartCount}</span>
+            )}
           </button>
         </div>
       </nav>

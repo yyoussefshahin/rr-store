@@ -5,9 +5,11 @@ import ProductCard from '../components/ProductCard';
 import { supabase } from '../lib/supabase';
 import Navbar from '../components/Navbar';
 import { products as localProducts } from '../data/products';
+import { useCart } from '../context/CartContext';
 
 export default function Home() {
   const [products, setProducts] = useState(localProducts);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     getProducts();
@@ -130,16 +132,8 @@ export default function Home() {
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                     <button 
-                      className="snipcart-add-item w-full py-2.5 bg-seirra-black/90 backdrop-blur-sm text-white text-[9px] font-medium tracking-[0.12em] uppercase hover:bg-seirra-black transition-all"
-                      data-item-id={p.id}
-                      data-item-price={p.price}
-                      data-item-url="https://rr-store-kappa.vercel.app/shop"
-                      data-item-description={p.description || p.desc}
-                      data-item-image={p.image}
-                      data-item-name={`${p.name} — ${p.description || p.desc}`}
-                      data-item-custom1-name="Size"
-                      data-item-custom1-value="M"
-                      data-item-custom1-options="S|M|L|XL"
+                      className="w-full py-2.5 bg-seirra-black/90 backdrop-blur-sm text-white text-[9px] font-medium tracking-[0.12em] uppercase hover:bg-seirra-black transition-all"
+                      onClick={() => addToCart(p, 'M')}
                     >+ Quick Add</button>
                   </div>
                 </div>
