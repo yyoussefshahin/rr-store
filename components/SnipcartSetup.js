@@ -13,10 +13,7 @@ export default function SnipcartSetup() {
     div.setAttribute("data-api-key", "MGM0ZjA4M2UtMWVhZS00Yzc3LWI4MmItOGUxZDg0MWU5NTJmNjM5MTUxNzQ4NDI2MDcwOTAw");
     div.setAttribute("data-config-open_cart_on_add", "false");
     div.setAttribute("data-config-product_validation_enabled", "false");
-    
-    // SET CURRENCY TO EGYPTIAN POUND
     div.setAttribute("data-config-currency", "EGP");
-    
     document.body.appendChild(div);
 
     const link = document.createElement("link");

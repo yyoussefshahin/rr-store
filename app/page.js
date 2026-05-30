@@ -6,284 +6,182 @@ import Navbar from '../components/Navbar';
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <main>
       <Navbar />
 
-      {/* ====== HERO — Added pt-14 to fix spacing ====== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-14">
-        <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/streetwear-urban1/1920/1080.jpg" alt="Urban backdrop" className="w-full h-full object-cover opacity-30"/>
-          <div className="absolute inset-0 bg-gradient-to-b from-void/80 via-void/60 to-void"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-void/90 via-transparent to-void/70"></div>
-        </div>
-        <div className="absolute top-20 right-10 w-32 h-32 rounded-full border border-neon/10 animate-spin-slow"></div>
-        <div className="absolute bottom-40 left-10 w-20 h-20 rounded-full border border-electric/10 animate-float"></div>
-        <div className="absolute top-1/3 left-1/4 text-[200px] font-display text-white/[0.02] leading-none select-none pointer-events-none">OS</div>
-
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <div className="animate-slide-up">
-            <span className="inline-block px-4 py-1.5 text-[10px] font-bold tracking-[0.3em] uppercase text-neon border border-neon/30 rounded-full bg-neon/5 mb-6">
-              🔥 New Drop — Summer 26
+      {/* ====== VIDEO HERO ====== */}
+      <section className="relative h-screen overflow-hidden">
+        {/* Video Background */}
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://picsum.photos/seed/seirra-hero/1920/1080.jpg"
+        >
+          {/* Replace this URL with your client's video */}
+          <source src="https://cdn.coverr.co/videos/coverr-woman-walking-on-the-beach-1573/1080p.mp4" type="video/mp4"/>
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40"></div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-16">
+          <div className="animate-fade-in">
+            <span className="inline-block px-4 py-1.5 text-[9px] font-medium tracking-[0.3em] uppercase text-white/70 border border-white/20 rounded-full mb-6">
+              Winter 2025 Collection
             </span>
           </div>
-          <h1 className="animate-slide-up slide-delay-1">
-            <span className="font-display block text-[80px] md:text-[140px] lg:text-[180px] leading-[0.85] tracking-[0.02em] text-white">OWN</span>
-            <span className="font-display block text-[80px] md:text-[140px] lg:text-[180px] leading-[0.85] tracking-[0.02em] gradient-text">YOUR</span>
-            <span className="font-display block text-[80px] md:text-[140px] lg:text-[180px] leading-[0.85] tracking-[0.02em] text-white">STYLE</span>
+          <h1 className="animate-fade-in fade-delay-1">
+            <span className="font-display block text-[60px] md:text-[100px] lg:text-[130px] leading-[0.85] tracking-[0.04em] text-white">WINTER</span>
+            <span className="font-display block text-[60px] md:text-[100px] lg:text-[130px] leading-[0.85] tracking-[0.04em] text-white/60">COLLECTION</span>
           </h1>
-          <p className="animate-slide-up slide-delay-2 mt-6 text-sm md:text-base text-smoke max-w-md mx-auto leading-relaxed">
-            Local streetwear for the culture. No rules. No limits. Just OS.
-          </p>
-          <div className="animate-slide-up slide-delay-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/shop" className="group px-8 py-4 bg-neon text-void text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-white transition-all shadow-lg shadow-neon/20 flex items-center gap-2">
-              Shop the Drop
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <div className="animate-fade-in fade-delay-2 mt-8 flex items-center gap-4">
+            <a href="/shop" className="px-8 py-3.5 bg-white text-seirra-black text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-seirra-black hover:text-white transition-all duration-300">
+              Shop Now
             </a>
-            <a href="#lookbook" className="px-8 py-4 bg-transparent border border-ash text-smoke text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:border-white hover:text-white transition-all">Lookbook</a>
+            <a href="#collection" className="px-8 py-3.5 border border-white/30 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-white hover:text-seirra-black transition-all duration-300">
+              Explore
+            </a>
           </div>
         </div>
 
+        {/* Scroll */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-          <span className="text-[9px] tracking-[0.3em] uppercase text-smoke/40 font-medium">Scroll</span>
-          <div className="w-px h-8 bg-ash relative overflow-hidden">
-            <div className="w-full h-3 bg-neon" style={{animation: 'scrollDown 2s ease-in-out infinite'}}></div>
+          <span className="text-[8px] tracking-[0.3em] uppercase text-white/30 font-medium">Scroll</span>
+          <div className="w-px h-6 bg-white/20 relative overflow-hidden">
+            <div className="w-full h-2 bg-white/50" style={{animation: 'scrollDown 2s ease-in-out infinite'}}></div>
           </div>
         </div>
       </section>
 
       {/* ====== MARQUEE ====== */}
-      <section className="bg-neon py-2 overflow-hidden">
+      <section className="bg-seirra-black py-2 overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(3)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <span key={i} className="inline-flex items-center gap-8">
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-void">OS STREETWEAR</span>
-              <span className="text-void/40">★</span>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-void">LOCAL BRAND</span>
-              <span className="text-void/40">★</span>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-void">MADE FOR THE STREETS</span>
-              <span className="text-void/40">★</span>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-void">NO RULES</span>
-              <span className="text-void/40">★</span>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-void">EGYPT 🇪🇬</span>
-              <span className="text-void/40">★</span>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">SEIRRA</span>
+              <span className="text-white/20">✦</span>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Contemporary Fashion</span>
+              <span className="text-white/20">✦</span>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Winter 2025</span>
+              <span className="text-white/20">✦</span>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/50">Made in Egypt</span>
+              <span className="text-white/20">✦</span>
             </span>
           ))}
         </div>
       </section>
 
-      {/* ====== DROPS ====== */}
-      <section id="drops" className="py-16 md:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-void via-void-light to-void"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5 pointer-events-none" style={{background: 'radial-gradient(circle, #39FF14 0%, transparent 70%)'}}></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-          <div className="mb-12">
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">🔥 Latest</span>
-            <h2 className="mt-3 font-display text-5xl md:text-7xl tracking-[0.02em] text-white">NEW DROPS<span className="text-neon">.</span></h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { seed: 'streetwear-drop1', title: 'Summer Tees', tag: 'NEW' },
-              { seed: 'streetwear-drop2', title: 'Oversized Collection', tag: 'HOT' },
-              { seed: 'streetwear-drop3', title: 'Accessories', tag: 'SOON' },
-            ].map((drop, i) => (
-              <div key={i} className="group relative overflow-hidden rounded-2xl aspect-[3/4] cursor-pointer">
-                <img src={`https://picsum.photos/seed/${drop.seed}/600/800.jpg`} alt={drop.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/20 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 text-[9px] font-bold tracking-[0.2em] uppercase rounded-full ${drop.tag === 'NEW' ? 'bg-neon text-void' : drop.tag === 'HOT' ? 'bg-hot text-white' : 'bg-white/10 text-white border border-white/20'}`}>{drop.tag}</span>
-                </div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="font-display text-2xl tracking-[0.04em] text-white">{drop.title}</h3>
-                  <div className="mt-2 flex items-center gap-2 text-smoke text-xs font-medium group-hover:text-neon transition-colors">
-                    <span>Shop Now</span>
-                    <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ====== FEATURED PRODUCTS (showing first 2) ====== */}
-      <section id="product" className="py-16 md:py-24 bg-void relative">
+      {/* ====== FEATURED COLLECTION ====== */}
+      <section id="collection" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex items-end justify-between mb-12">
             <div>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">🛒 Shop</span>
-              <h2 className="mt-3 font-display text-5xl md:text-7xl tracking-[0.02em] text-white">FEATURED<span className="text-neon">.</span></h2>
+              <span className="text-[10px] font-medium tracking-[0.3em] uppercase text-seirra-gray">New Arrivals</span>
+              <h2 className="mt-2 text-3xl md:text-4xl font-light tracking-[0.04em] text-seirra-black">
+                WINTER <span className="font-bold">2025</span>
+              </h2>
             </div>
-            <a href="/shop" className="group flex items-center gap-2 px-5 py-2.5 border border-ash text-smoke text-[10px] font-bold tracking-[0.15em] uppercase rounded-full hover:border-neon hover:text-neon transition-all">
+            <a href="/shop" className="group flex items-center gap-2 text-[10px] font-medium tracking-[0.15em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">
               View All
               <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {products.slice(0, 4).map((p) => (
+            {products.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ====== CULTURE ====== */}
-      <section id="culture" className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/urban-street-culture/1920/1080.jpg" alt="Street culture" className="w-full h-full object-cover opacity-15"/>
-          <div className="absolute inset-0 bg-void/90"></div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-neon/5 via-transparent to-electric/5 animate-bg-scroll"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">⚡ The Culture</span>
-              <h2 className="mt-4 font-display text-5xl md:text-6xl tracking-[0.02em] text-white leading-tight">NOT JUST<br/>A BRAND<span className="text-neon">.</span></h2>
-              <h2 className="font-display text-5xl md:text-6xl tracking-[0.02em] gradient-text leading-tight">IT&apos;S A<br/>MOVEMENT.</h2>
-              <p className="mt-6 text-sm text-smoke leading-relaxed max-w-md">OS was born on the streets. Every piece carries the energy of the city. We don&apos;t follow trends. We set them.</p>
-              <div className="mt-8 grid grid-cols-3 gap-3">
-                <div className="text-center p-4 rounded-2xl bg-void-light border border-ash">
-                  <span className="font-display text-2xl text-neon">100%</span>
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-smoke mt-1">Cotton</p>
-                </div>
-                <div className="text-center p-4 rounded-2xl bg-void-light border border-ash">
-                  <span className="font-display text-2xl text-electric">OS</span>
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-smoke mt-1">Fit</p>
-                </div>
-                <div className="text-center p-4 rounded-2xl bg-void-light border border-ash">
-                  <span className="font-display text-2xl text-hot">EG</span>
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-smoke mt-1">Made In</p>
-                </div>
+      {/* ====== CATEGORIES ====== */}
+      <section className="py-16 md:py-24 bg-seirra-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="/shop?cat=women" className="group relative overflow-hidden aspect-[4/5] cursor-pointer">
+              <img src="https://picsum.photos/seed/seirra-women/800/1000.jpg" alt="Women" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-8 left-8">
+                <h3 className="text-3xl md:text-4xl font-light tracking-[0.1em] text-white">WO<span className="font-bold">MEN</span></h3>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-white/60 mt-2 block">Shop Collection →</span>
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-                  <img src="https://picsum.photos/seed/streetwear-culture1/600/750.jpg" alt="Culture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
-                </div>
-                <div className="rounded-2xl bg-void-light border border-ash aspect-square p-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="font-display text-5xl text-neon animate-pulse-neon">OS</span>
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-smoke mt-2">Since Day 1</p>
-                  </div>
-                </div>
+            </a>
+            <a href="/shop?cat=men" className="group relative overflow-hidden aspect-[4/5] cursor-pointer">
+              <img src="https://picsum.photos/seed/seirra-men/800/1000.jpg" alt="Men" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute bottom-8 left-8">
+                <h3 className="text-3xl md:text-4xl font-light tracking-[0.1em] text-white">M<span className="font-bold">EN</span></h3>
+                <span className="text-[10px] tracking-[0.2em] uppercase text-white/60 mt-2 block">Shop Collection →</span>
               </div>
-              <div className="space-y-4 pt-8">
-                <div className="rounded-2xl bg-void-light border border-ash aspect-square p-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="text-2xl">🇪🇬</span>
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-smoke mt-2">Local Brand</p>
-                  </div>
-                </div>
-                <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-                  <img src="https://picsum.photos/seed/streetwear-culture2/600/750.jpg" alt="Culture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ====== LOOKBOOK ====== */}
-      <section id="lookbook" className="py-16 md:py-24 bg-void-light overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10">
-          <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-neon">📸 Lookbook</span>
-          <h2 className="mt-3 font-display text-5xl md:text-7xl tracking-[0.02em] text-white">STREET STYLE<span className="text-neon">.</span></h2>
-        </div>
-        <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory px-6 md:px-12">
-          {[
-            { seed: 'street-look1', title: '01 — Rooftop Sessions', desc: 'OS Tee + Cargo' },
-            { seed: 'street-look2', title: '02 — Downtown Run', desc: 'OS Oversized + Joggers' },
-            { seed: 'street-look3', title: '03 — Late Night', desc: 'OS Layered' },
-            { seed: 'street-look4', title: '04 — Heatwave', desc: 'OS Tee + Shorts' },
-            { seed: 'street-look5', title: '05 — The Crew', desc: 'Full OS Capsule' },
-          ].map((look, i) => (
-            <div key={i} className="flex-shrink-0 w-[240px] md:w-[300px] snap-start group">
-              <div className="relative overflow-hidden rounded-2xl aspect-[3/4]">
-                <img src={`https://picsum.photos/seed/${look.seed}/680/900.jpg`} alt={look.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-void/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                  <p className="text-white text-[10px] font-bold tracking-[0.1em]">{look.title}</p>
-                </div>
-              </div>
-              <p className="mt-2 text-[10px] tracking-[0.2em] uppercase text-smoke font-medium">{look.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ====== MANIFESTO ====== */}
-      <section className="py-16 md:py-24 overflow-hidden relative">
-        <div className="absolute inset-0">
-          <img src="https://picsum.photos/seed/urban-night-egypt/1920/800.jpg" alt="Urban night" className="w-full h-full object-cover"/>
-          <div className="absolute inset-0 bg-void/80 backdrop-blur-sm"></div>
-        </div>
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-          <span className="text-3xl">⚡</span>
-          <blockquote className="mt-6 font-display text-3xl md:text-5xl text-white leading-tight tracking-[0.02em]">
-            WE DON&apos;T DRESS TO IMPRESS.<br/><span className="gradient-text">WE DRESS TO EXPRESS.</span>
-          </blockquote>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <div className="w-12 h-px bg-neon/40"></div>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-neon/60 font-bold">OS Manifesto</span>
-            <div className="w-12 h-px bg-neon/40"></div>
-          </div>
+      {/* ====== BRAND STORY ====== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="brand-name text-lg tracking-[0.3em] text-seirra-gray">
+            <span className="light">SEI</span><span className="bold">RRA</span>
+          </span>
+          <h2 className="mt-6 text-2xl md:text-4xl font-light tracking-[0.02em] text-seirra-black leading-snug">
+            Fashion that speaks <span className="font-bold">volume</span> without saying a word.
+          </h2>
+          <p className="mt-6 text-sm text-seirra-gray leading-relaxed max-w-lg mx-auto">
+            SEIRRA is a contemporary fashion brand born from the streets of Egypt. 
+            We design for the bold, the confident, and the unapologetically stylish.
+          </p>
         </div>
       </section>
 
       {/* ====== NEWSLETTER ====== */}
-      <section className="py-16 md:py-20 bg-void relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-neon/5 via-transparent to-hot/5 animate-bg-scroll"></div>
-        <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
-          <span className="text-2xl">📩</span>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl tracking-[0.02em] text-white">GET EARLY ACCESS<span className="text-neon">.</span></h2>
-          <p className="mt-3 text-sm text-smoke">Be first to know about new drops &amp; exclusive discounts.</p>
-          <form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => { e.preventDefault(); alert('Welcome to the OS family! 🔥'); }}>
-            <input type="email" placeholder="Your email" required className="flex-1 px-5 py-3 bg-void-light border border-ash rounded-full text-sm text-white placeholder-smoke/50 focus:outline-none focus:border-neon transition-colors"/>
-            <button type="submit" className="px-6 py-3 bg-neon text-void text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-white transition-all">Join</button>
+      <section className="py-16 md:py-20 bg-seirra-black">
+        <div className="max-w-lg mx-auto px-6 text-center">
+          <h2 className="text-xl md:text-2xl font-light tracking-[0.04em] text-white">
+            JOIN THE <span className="font-bold">MOVEMENT</span>
+          </h2>
+          <p className="mt-2 text-xs text-white/40">Be first to know about new drops & exclusive offers.</p>
+          <form className="mt-6 flex gap-2" onSubmit={(e) => { e.preventDefault(); alert('Welcome to SEIRRA!'); }}>
+            <input type="email" placeholder="Your email" required className="flex-1 px-4 py-3 bg-white/10 border border-white/10 text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/30 transition-colors"/>
+            <button type="submit" className="px-6 py-3 bg-white text-seirra-black text-[10px] font-semibold tracking-[0.12em] uppercase hover:bg-white/80 transition-all">Join</button>
           </form>
         </div>
       </section>
 
       {/* ====== FOOTER ====== */}
-      <footer className="bg-void-light py-12 border-t border-ash">
+      <footer className="bg-seirra-dark py-12">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="col-span-2 md:col-span-1">
-              <span className="font-display text-4xl tracking-wider text-neon animate-pulse-neon">OS</span>
-              <p className="mt-3 text-xs text-smoke leading-relaxed max-w-[200px]">Local streetwear brand. Made for the streets. Built for the culture. 🇪🇬</p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <span className="brand-name text-2xl tracking-[0.25em] text-white">
+                <span className="light">SEI</span><span className="bold">RRA</span>
+              </span>
+              <p className="mt-2 text-[10px] text-white/30 tracking-wide">Contemporary Fashion — Made in Egypt 🇪🇬</p>
             </div>
-            <div>
-              <h5 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 mb-4">Shop</h5>
-              <ul className="space-y-2">
-                <li><a href="/shop" className="text-xs text-smoke hover:text-neon transition-colors">All Products</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Tees</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Bottoms</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Accessories</a></li>
-              </ul>
+            <div className="flex items-center gap-6">
+              <a href="#" className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40 hover:text-white transition-colors">Home</a>
+              <a href="/shop" className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40 hover:text-white transition-colors">Shop</a>
+              <a href="/contact" className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40 hover:text-white transition-colors">Contact</a>
             </div>
-            <div>
-              <h5 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 mb-4">Info</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">About OS</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Size Guide</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Shipping</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 mb-4">Follow</h5>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Instagram</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">TikTok</a></li>
-                <li><a href="#" className="text-xs text-smoke hover:text-neon transition-colors">Twitter</a></li>
-              </ul>
+            <div className="flex items-center gap-4">
+              <a href="#" className="text-white/30 hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" className="text-white/30 hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-ash text-center">
-            <p className="text-[10px] text-smoke/40 tracking-wide">© 2026 OS. All rights reserved. Made in Egypt 🇪🇬</p>
+          <div className="mt-8 pt-6 border-t border-white/5 text-center">
+            <p className="text-[9px] text-white/20 tracking-wide">© 2025 SEIRRA. All rights reserved.</p>
           </div>
         </div>
       </footer>
-
     </main>
   );
 }

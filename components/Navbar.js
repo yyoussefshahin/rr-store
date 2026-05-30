@@ -1,45 +1,84 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-void/90 backdrop-blur-lg border-b border-ash/50">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <a href="/" className="font-display text-3xl tracking-wider text-neon animate-pulse-neon">OS</a>
-
+      {/* ====== SECONDARY NAV (Top bar) ====== */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-seirra-black text-white">
+        <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+          {/* Left: Brand + Description */}
           <div className="flex items-center gap-3">
-
-            {/* SNIPCART OFFICIAL CART BUTTON */}
-            {/* This uses Snipcart's built-in class to open the cart */}
-            <button className="snipcart-checkout relative flex items-center justify-center w-9 h-9 rounded-full border border-ash hover:border-neon transition-all">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              {/* Snipcart automatically fills this span with the item count */}
-              <span className="snipcart-items-count absolute -top-1.5 -right-1.5 min-w-[20px] h-5 bg-neon text-void text-[10px] font-bold rounded-full flex items-center justify-center px-1">0</span>
-            </button>
-
-            {/* Hamburger */}
-            <button onClick={() => setMenuOpen(!menuOpen)} className="w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-full border border-ash hover:border-neon transition-all">
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : ''}`}></span>
-              <span className={`block w-4 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}></span>
-            </button>
+            <span className="brand-name text-[11px] tracking-[0.25em]">
+              <span className="light">SEI</span><span className="bold">RRA</span>
+            </span>
+            <span className="hidden sm:inline text-[9px] text-white/40 tracking-wide">— Contemporary Fashion</span>
           </div>
+
+          {/* Right: Social Icons */}
+          <div className="flex items-center gap-3">
+            <a href="#" className="text-white/50 hover:text-white transition-colors">
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" className="text-white/50 hover:text-white transition-colors">
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ====== PRIMARY NAV ====== */}
+      <nav className="fixed top-9 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-seirra-light">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+          
+          {/* Left: Hamburger (mobile) */}
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden w-8 h-8 flex flex-col items-center justify-center gap-1">
+            <span className={`block w-5 h-[1.5px] bg-seirra-black transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] bg-seirra-black transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-5 h-[1.5px] bg-seirra-black transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`}></span>
+          </button>
+
+          {/* Center: Navigation Links (Desktop) */}
+          <div className="hidden md:flex items-center gap-8">
+            <a href="/" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Home</a>
+            <a href="/shop?cat=women" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Women</a>
+            <a href="/shop?cat=winter" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Winter 2025</a>
+            <a href="/shop?cat=men" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Men</a>
+            <a href="/contact" className="text-[11px] font-medium tracking-[0.2em] uppercase text-seirra-gray hover:text-seirra-black transition-colors">Contact Us</a>
+          </div>
+
+          {/* Center: Logo */}
+          <a href="/" className="brand-name text-2xl absolute left-1/2 -translate-x-1/2">
+            <span className="light">SEI</span><span className="bold">RRA</span>
+          </a>
+
+          {/* Right: Cart */}
+          <button className="snipcart-checkout relative flex items-center justify-center w-8 h-8 hover:opacity-60 transition-opacity">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span className="snipcart-items-count absolute -top-1 -right-1 min-w-[16px] h-4 bg-seirra-black text-white text-[9px] font-bold rounded-full flex items-center justify-center px-1">0</span>
+          </button>
         </div>
       </nav>
 
-      {/* Full Screen Menu */}
-      <div className={`fixed inset-0 z-40 bg-void transition-all duration-500 flex flex-col items-center justify-center gap-6 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[300px] md:text-[400px] text-white/[0.02] leading-none select-none pointer-events-none">OS</div>
-        <a href="/#drops" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">DROPS</a>
-        <a href="/shop" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">SHOP</a>
-        <a href="/#culture" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CULTURE</a>
-        <a href="/#lookbook" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">LOOKBOOK</a>
-        <a href="/contact" onClick={() => setMenuOpen(false)} className="font-display text-5xl md:text-7xl tracking-[0.08em] text-white hover:text-neon transition-all duration-300 hover:tracking-[0.15em]">CONTACT</a>
-        <div className="absolute bottom-8 flex items-center gap-2 text-smoke/40 text-[10px] tracking-[0.2em] uppercase"><span>🇪🇬</span><span>Local Streetwear</span></div>
+      {/* ====== MOBILE MENU ====== */}
+      <div className={`fixed inset-0 z-40 bg-white transition-all duration-500 flex flex-col pt-24 px-8 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <a href="/" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Home</a>
+        <a href="/shop?cat=women" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Women</a>
+        <a href="/shop?cat=winter" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Winter 2025</a>
+        <a href="/shop?cat=men" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Men</a>
+        <a href="/contact" onClick={() => setMenuOpen(false)} className="py-4 text-2xl font-light tracking-[0.15em] text-seirra-black border-b border-seirra-light">Contact Us</a>
+        
+        <div className="mt-auto pb-8 flex items-center gap-4">
+          <a href="#" className="text-seirra-gray hover:text-seirra-black transition-colors">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" className="text-seirra-gray hover:text-seirra-black transition-colors">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
       </div>
     </>
   );

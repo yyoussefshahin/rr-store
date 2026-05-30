@@ -2,8 +2,8 @@ import './globals.css'
 import SnipcartSetup from '../components/SnipcartSetup'
 
 export const metadata = {
-  title: 'OS — Own Your Style',
-  description: 'Local streetwear brand. Made for the streets. Built for the culture.',
+  title: 'SEIRRA — Contemporary Fashion',
+  description: 'SEIRRA - Modern fashion for the bold.',
 }
 
 export default function RootLayout({ children }) {
